@@ -1,0 +1,160 @@
+* {
+    color: black;
+    font-family: sans-serif;
+}
+
+a:hover {
+    color: darkslategray;
+    cursor:pointer;
+    text-decoration: none;
+}
+
+.button {
+    background-color: gainsboro;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: white;
+    border-color: darkslateblue;
+    color: darkslateblue;
+    cursor: pointer;
+}
+
+body {
+    background-color: white;
+}
+
+button {
+    background-color: gainsboro;
+    border: 2px solid gainsboro;
+    border-radius: 5px;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 5px;
+}
+
+button:hover {
+    background-color: white;
+    border: 2px solid white;
+    color: darkslateblue;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+footer {
+    background-color: lightblue;
+    margin: -8px;
+    padding: 1%;
+    justify-content: center;
+}
+
+input {
+    background-color: gainsboro;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    font-size: 16px;
+    padding: 8px;
+}
+
+input:hover {
+    background-color: white;
+    border-color: darkslateblue;
+    color: darkslateblue;
+    cursor: pointer;
+}
+
+input:focus {
+    border-color: white;
+    color: white;
+}
+
+nav {
+    background-color: lightblue;
+    display: flex;
+    justify-content:space-between;
+    margin: -8px;
+    padding: 1%;
+}
+
+nav a.button {
+    float: right;
+}
+
+nav div {
+    display: flex;
+    justify-content:space-between;
+}
+
+nav img {
+    float: right;
+    width: 34px;
+    height: 34px;
+}
+
+nav input {
+    float: right;
+}
+
+section {
+    background-color: lightblue;
+    margin: auto;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    padding: 2%;
+    position: relative;
+    width: 50%;
+}
+
+#connection-form {
+    align-content: space-evenly;
+    border: solid grey 2px;
+    display: grid;
+    justify-content: space-evenly;
+    margin: auto;
+    margin-bottom: 10%;
+    margin-top: 10%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    position: relative;
+    row-gap: 20px;
+    width: 30%;
+}
+
+#connection-form hr {
+    width: 100%;
+}
+
+#connection-form h3 {
+    text-decoration: underline;
+}
+
+#connection-form * {
+    width: max-content;
+    margin: auto;
+}
+
+.finalisation {
+    margin-left: 5%;
+}
+/*
+#icon {
+    background-color: rgb(29, 31, 41);
+    border-radius: 10px;
+    border-style: none;
+    font-size: 16px;
+    text-decoration: none;
+    width: 125px;
+    height: 35px;
+}
+
+#icon:hover {
+    background-color: rgb(26, 27, 36);
+}
+*/

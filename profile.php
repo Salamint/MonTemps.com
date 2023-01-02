@@ -27,6 +27,11 @@ else
 if (isset($_POST['delete']) and !empty($_POST['delete']))
 {
     $delete = true;
+    $proprietes = $connexion->query("SELECT id from Proprietes WHERE email = \"$email\"")->fetchAll();
+
+    // Suppression des courses
+    foreach($proprietes as $prop)
+        $connexion->query("DELETE FROM Courses WHERE id = \"".$prop['id']."\"");
 
     // Suppression des temps
     $connexion->query("DELETE FROM Temps WHERE email = \"$email\"");

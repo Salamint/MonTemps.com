@@ -1,11 +1,13 @@
+DROP TABLE IF EXISTS "Proprietes";
 DROP TABLE IF EXISTS "Temps";
 DROP TABLE IF EXISTS "Courses";
 DROP TABLE IF EXISTS "Utilisateurs";
 
 CREATE TABLE Courses (
 	"id" TEXT UNIQUE NOT NULL,
+	"name" TEXT NOT NULL,
 	"type" TEXT NOT NULL,
-	"date" date NOT NULL,
+	"date" TEXT NOT NULL,
 	CONSTRAINT PK_Courses PRIMARY KEY ("id")
 );
 
@@ -27,12 +29,20 @@ CREATE TABLE Temps (
 	CONSTRAINT FK_TempsUtilisateur FOREIGN KEY (email) REFERENCES Utilisateurs(email)
 );
 
+CREATE TABLE Proprietes (
+	"email" TEXT,
+	"id" TEXT,
+	CONSTRAINT PK_Proprietes PRIMARY KEY ("email", "id"),
+	CONSTRAINT FK_ProprieteCourse FOREIGN KEY (id) REFERENCES Courses(id),
+	CONSTRAINT FK_ProprieteUtilisateur FOREIGN KEY (email) REFERENCES Utilisateurs(email)
+);
+
 INSERT INTO Courses VALUES
-("0", "Marathon", cast("2022-09-20" AS date)),
-("1", "Equitation", cast("2021-01-02" AS date)),
-("2", "Natation", cast("2017-06-27" AS date)),
-("3", "100 M", cast("2023-01-03" AS date)),
-("4", "Velo", cast("2019-05-19" AS date));
+("0", "Marathon de Voiron", "Marathon", "2022-09-20"),
+("1", "Steel Ball Run", "Equitation", "2021-01-02"),
+("2", "Course de Plongée", "Natation", "2017-06-27"),
+("3", "Compétition du 100 Mètres", "100 M", "2023-01-03"),
+("4", "Super Vélo", "Vélo", "2019-05-19");
 
 INSERT INTO Utilisateurs VALUES
 ("malefoy.drago@poudlard.gouv.fr", "UtDe6sVL", "Drago Malefoy", 43),
@@ -77,3 +87,10 @@ INSERT INTO Temps VALUES
 ("zeppeli.gyro@jojo.fandom.com", "4", 3721),
 ("zeppeli.gyro@jojo.fandom.com", "0", 732),
 ("zeppeli.gyro@jojo.fandom.com", "1", 630);
+
+INSERT INTO Proprietes VALUES
+("dumbledore.albus@poudlard.gouv.fr", "0"),
+("bucciarati.bruno@jojo.fandom.com", "1"),
+("dumbledore.albus@poudlard.gouv.fr", "2"),
+("dumbledore.albus@poudlard.gouv.fr", "3"),
+("pucci.enrico@jojo.fandom.com", "4");

@@ -21,10 +21,9 @@ if (isset($_POST['validate_sign_in']))
     //Si le nom d'utilisateur et le mot de passe son correct et le mot de passe correspond
     if (isset($email) and isset($password))
     {
-        $sql = "SELECT password FROM Utilisateurs WHERE email = \"$email\"";
         try
         {
-            $result = $connexion->query($sql);
+            $result = $connexion->query("SELECT password FROM Utilisateurs WHERE email = \"$email\"");
             $account = $result->fetchAll();
             if (!empty($account))
             {
@@ -70,9 +69,7 @@ if (isset($_POST['validate_sign_up']))
                             {
                                 if ($age >= 16)
                                 {
-                                    $sql = "INSERT INTO Utilisateurs VALUES (\"$email\", \"$password\", \"$nickname\", $age)";
-                                    $result = $connexion->exec($sql);
-                                    echo $result;
+                                    $result = $connexion->exec("INSERT INTO Utilisateurs VALUES (\"$email\", \"$password\", \"$nickname\", $age)");
                                     $_SESSION['email'] = $email;
                                 }
                                 else
@@ -113,7 +110,7 @@ if (is_logged()):
     <section>
         <h2>Créez votre compte en ligne <?=NOM_SITE?>.</h2>
         <hr>
-        <form action="connection.php" id="connection-form" method="POST">
+        <form action="connexion.php" id="centered-form" method="POST">
             <h3>Inscription :</h3>
             <input name="email" placeholder="Adresse e-mail" required type="email">
             <input name="password" placeholder="Mot de passe" minlength="8" maxlength="32" required type="password">
@@ -121,8 +118,11 @@ if (is_logged()):
             <input name="age" placeholder="Âge" required type="number">
             <input name="validate_sign_up" type="submit" value="Inscription">
         </form>
+        <?php if (isset($error)): ?>
+            <p><?=$error?></p>
+        <?php endif; ?>
         <hr>
-        <form action="connection.php" method="POST">
+        <form action="connexion.php" method="POST">
             <label for="sign_in">Déjà un compte ?</label>
             <input name="sign_in" id="sign_in" type="submit" value="Se connecter">
         </form>
@@ -133,7 +133,7 @@ if (is_logged()):
     <section>
         <h2>Connectez-vous à votre compte en ligne <?=NOM_SITE?>.</h2>
         <hr>
-        <form action="connection.php" id="connection-form" method="POST">
+        <form action="connexion.php" id="centered-form" method="POST">
             <h3>Connexion :</h3>
             <input name="email" placeholder="Adresse e-mail" required type="email">
             <input name="password" placeholder="Mot de passe" minlength="8" required type="password">
@@ -143,7 +143,7 @@ if (is_logged()):
             <p><?=$error?></p>
         <?php endif; ?>
         <hr>
-        <form action="connection.php" method="POST">
+        <form action="connexion.php" method="POST">
             <label for="sign_up">Pas de compte ?</label>
             <input name="sign_up" id="sign_up" type="submit" value="En créer un">
         </form>

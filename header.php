@@ -47,10 +47,9 @@ if (!session_id())
 function get_account(string $email) : PDOStatement | null
 {
     global $connexion;
-    $sql = "SELECT * FROM Utilisateurs WHERE email = \"$email\"";
     try
     {
-        $result = $connexion->query($sql);
+        $result = $connexion->query("SELECT * FROM Utilisateurs WHERE email = \"$email\"");
 		if ($result)
 			return $result;
         return null;
@@ -82,23 +81,26 @@ if (isset($_POST['disconnect']))
 	<head>
 		<meta charset="UTF-8">
 		<title><?=NOM_SITE?></title>
-		<link rel="stylesheet" type="text/css" href="styles/style.css">
+		<link rel="stylesheet" type="text/css" href="assets/style.css">
 	</head>
 
 	<body>
 		<header>
 			<nav>
-				<a class="button" href="index.php"><button id="icon"><?=NOM_SITE?></button></a>
+				<a class="button title" href="index.php"><button id="icon"><?=NOM_SITE?></button></a>
 
 				<div>
+					<a class="button" href="browse.php"><button>Toutes les courses</button></a>
 					<!-- Si l'utillisateur est connecté, afficher un bouton de déconnexion -->
 					<?php if(is_logged()): ?>
+						<a class="button" href="create.php?type=temps"><button>Soumettre un temps</button></a>
+						<a class="button" href="create.php?type=course"><button>Créer une course</button></a>
 						<a class="button" href="profile.php"><img src="images/profile.png"></a>
 						<form action="index.php" method="POST">
 							<input name="disconnect" type="submit" value="Déconnexion">
 						</form>
 					<?php else: ?>
-						<a class="button" href="connection.php"><button id="icon">Connexion</button></a>
+						<a class="button" href="connexion.php"><button id="icon">Connexion</button></a>
 					<?php endif; ?>
 				</div>
 			</nav>

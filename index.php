@@ -15,15 +15,31 @@ include 'header.php';
 
     <h2>Les Meilleurs Temps :</h2>
     <?php
-    $sql = "SELECT C.id AS ID, MIN(DISTINCT T.temps) AS min
-    FROM Temps AS T JOIN Courses AS C ON T.id = C.id
-    ORDER BY C.id";
+    $result = $connexion->query("SELECT id, name, type, date FROM Courses AS C");
 
-    $result = $connexion->query($sql);
-    echo "<table><tr><th>Course</th><th>Temps</th></tr>";
+    echo "<table>
+        <tr>
+            <th>Identifiant</th>
+            <th>Nom</th>
+            <th>Catégorie</th>
+            <th>Temps</th>
+            <th>Date</th>
+        </tr>";
     foreach($result as $row)
     {
-        echo "<tr><td>".$row['ID']."</td><td>".$row['min']."</td></tr>";
+        $id = $row['id'];
+        $result = $connexion->query(
+            "SELECT MIN(temps) AS min
+        FROM Temps
+        WHERE id = \"$id\"");
+        $temps = $result->fetchAll()[0]['min'];
+        echo "<tr>
+            <td>".$id."</td>
+            <td>".$row['name']."</td>
+            <td>".$row['type']."</td>
+            <td>".$temps."</td>
+            <td>".$row['date']."</td>
+        <tr>";
     }
     echo "</table>";
     ?>

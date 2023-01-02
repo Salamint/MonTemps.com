@@ -1,0 +1,222 @@
+* {
+    color: black;
+    font-family: sans-serif;
+}
+
+a:hover {
+    color: darkslateblue;
+    cursor:pointer;
+    text-decoration: none;
+}
+
+.button {
+    background-color: lightblue;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: darkslateblue;
+    cursor: pointer;
+}
+
+.button button {
+    width: 100%;
+    height: 100%;
+}
+
+.button button:hover {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: white;
+}
+
+button, input {
+    border: none;
+    border-radius: 0;
+    background-color: lightblue;
+    padding: 10px;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+button:hover, input:hover {
+    background-color: rgb(80, 148, 170);
+    border: none;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+footer {
+    background-color: lightblue;
+    margin: -8px;
+    padding: 1%;
+    justify-content: center;
+}
+
+hr {
+    border: 1px solid white;
+    color: white;
+}
+
+input {
+    border: none;
+    border-radius: 0;
+    background-color: lightblue;
+    padding: 10px;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+nav {
+    background-color: lightblue;
+    display: flex;
+    justify-content:space-between;
+    margin: -8px;
+    padding: 1%;
+}
+
+nav a.button {
+    float: right;
+    margin-right: 10px;
+}
+
+nav div {
+    display: flex;
+    justify-content:space-between;
+}
+
+nav img {
+    float: right;
+    width: 38px;
+    height: 38px;
+}
+
+nav input {
+    float: right;
+}
+
+section {
+    background-color: lightblue;
+    margin: auto;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    padding: 2%;
+    position: relative;
+    width: 50%;
+}
+
+table {
+    border-collapse: collapse;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+td, th {
+    background-color: rgb(206, 233, 241);
+    border: 1px solid black;
+    padding: 8px;
+}
+
+#centered-form {
+    align-content: space-evenly;
+    border: solid grey 2px;
+    display: grid;
+    justify-content: space-evenly;
+    margin: auto;
+    margin-bottom: 10%;
+    margin-top: 10%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    position: relative;
+    row-gap: 20px;
+    width: 50%;
+}
+
+#centered-form hr {
+    width: 100%;
+}
+
+#centered-form h3 {
+    text-decoration: underline;
+}
+
+#centered-form * {
+    width: max-content;
+    margin: auto;
+}
+
+#centered-form input {
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    background-color: gainsboro;
+}
+
+#centered-form input:hover {
+    border: 2px solid darkslateblue;
+    border-radius: 5px;
+    color: darkslateblue;
+    background-color: white;
+}
+
+.finalisation {
+    margin-left: 5%;
+}
+
+.profile {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding-right: 20%;
+}
+
+.profile .right {
+    float: right;
+}
+
+#delete {
+    border: none;
+    color: white;
+    background-color: brown;
+    border-radius: 0;
+    padding: 10px;
+}
+
+#delete:hover {
+    background-color: red;
+}
+
+.share {
+    background-color: rgb(75, 87, 255);
+    color: white;
+}
+
+.share:hover {
+    background-color: rgb(122, 131, 255);
+    color: white;
+}
+
+.browse input {
+    background-color: rgb(206, 233, 241);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.title button {
+    font-weight: bold;
+    font-size: 20px;
+    height: 38px;
+}
+
+.title button:hover {
+    height: 38px;
+}

@@ -1,11 +1,11 @@
+DROP TABLE IF EXISTS "Temps";
 DROP TABLE IF EXISTS "Courses";
 DROP TABLE IF EXISTS "Utilisateurs";
-DROP TABLE IF EXISTS "Temps";
 
 CREATE TABLE Courses (
 	"id" TEXT UNIQUE NOT NULL,
 	"type" TEXT NOT NULL,
-	"ouverture" TEXT NOT NULL,
+	"date" date NOT NULL,
 	CONSTRAINT PK_Courses PRIMARY KEY ("id")
 );
 
@@ -28,11 +28,11 @@ CREATE TABLE Temps (
 );
 
 INSERT INTO Courses VALUES
-("0", "Marathon", "20 Septembre 2022"),
-("1", "Equitation", "2 Janvier 2021"),
-("2", "Natation", "27 Juin 2017"),
-("3", "100 M", "3 Janvier 2023"),
-("4", "Velo", "19 Mai 2019");
+("0", "Marathon", cast("2022-09-20" AS date)),
+("1", "Equitation", cast("2021-01-02" AS date)),
+("2", "Natation", cast("2017-06-27" AS date)),
+("3", "100 M", cast("2023-01-03" AS date)),
+("4", "Velo", cast("2019-05-19" AS date));
 
 INSERT INTO Utilisateurs VALUES
 ("malefoy.drago@poudlard.gouv.fr", "UtDe6sVL", "Drago Malefoy", 43),

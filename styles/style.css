@@ -4,7 +4,7 @@
 }
 
 a:hover {
-    color: darkslategray;
+    color: darkslateblue;
     cursor:pointer;
     text-decoration: none;
 }
@@ -66,13 +66,11 @@ input {
 input:hover {
     background-color: white;
     border-color: darkslateblue;
-    color: darkslateblue;
     cursor: pointer;
 }
 
 input:focus {
-    border-color: white;
-    color: white;
+    color: darkslateblue;
 }
 
 nav {
@@ -124,7 +122,7 @@ section {
     padding-top: 20px;
     position: relative;
     row-gap: 20px;
-    width: 30%;
+    width: 50%;
 }
 
 #connection-form hr {
@@ -143,18 +141,12 @@ section {
 .finalisation {
     margin-left: 5%;
 }
-/*
-#icon {
-    background-color: rgb(29, 31, 41);
-    border-radius: 10px;
-    border-style: none;
-    font-size: 16px;
-    text-decoration: none;
-    width: 125px;
-    height: 35px;
+
+.profile {
+    display: flex;
+    justify-content: space-evenly;
 }
 
-#icon:hover {
-    background-color: rgb(26, 27, 36);
+.profile .right {
+    float: right;
 }
-*/

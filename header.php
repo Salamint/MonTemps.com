@@ -5,40 +5,14 @@ const NOM_SITE = "MonTemps.com";
 // Modifie le fuseau horaire par défaut
 date_default_timezone_set('Europe/Paris');
 
-// nom du fichier contenant le nombre d'utilisateur ayant visité le site
-$viewerNumberFileName = "nombre_de_visiteur.log";
 
-// Au démarrage, si le fichier existe,
-if (file_exists($viewerNumberFileName))
-{
-	// Lire le nombre de visiteurs
-	$file = fopen($viewerNumberFileName, "r");
-	$nombreDeVisiteurs = intval(fread($file, filesize($viewerNumberFileName)));
-	fclose($file);
+// Connexion à la base de données
+try {
+	$connexion = new PDO("sqlite:database/database.db");
+} catch(PDOException $e) {
+	echo "Connection failed: " . $e->getMessage();
+	$connexion = null;
 }
-else
-{
-	// Sinon, créer le fichier du nombre de visiteur, et initialiser la variable à 0
-	$file = fopen($viewerNumberFileName, "w");
-	$nombreDeVisiteurs = 0;
-	fwrite($file, (string) $nombreDeVisiteurs);
-	fclose($file);
-}
-
-
-/**
- * Fonction utilisée pour rafraîchir le nombre de visiteur du site,
- * c'est à dire incrémenter la variable de comptage de 1 et réécrire
- * la nouvelle valeur dans le fichier du nombre de visiteur.
- */
-function refresh_viewer_number()
-{
-	global $viewerNumberFileName, $nombreDeVisiteurs;
-	$nombreDeVisiteurs += 1;
-	$file = fopen($viewerNumberFileName, "w");
-	fwrite($file, (string) $nombreDeVisiteurs);
-}
-
 
 /**
  * Met fin à la session en cours en la vidant de ses attributs de session.
@@ -59,7 +33,7 @@ function end_session()
  */
 function is_logged() : bool
 {
-	return isset($_SESSION['username']) and isset($_SESSION['password']);
+	return isset($_SESSION['email']);
 }
 
 
@@ -68,6 +42,31 @@ if (!session_id())
 {
 	session_start();
 	session_regenerate_id();
+}
+
+function get_account(string $email) : PDOStatement | null
+{
+    global $connexion;
+    $sql = "SELECT * FROM Utilisateurs WHERE email = \"$email\"";
+    try
+    {
+        $result = $connexion->query($sql);
+		if ($result)
+			return $result;
+        return null;
+    }
+    catch (PDOException)
+    {
+        return null;
+    }
+}
+
+function get_account_info(string $info)
+{
+	$account = get_account($_SESSION['email']);
+	if (isset($account))
+		return $account->fetchAll()[0][$info];
+	return null;
 }
 
 
@@ -82,7 +81,7 @@ if (isset($_POST['disconnect']))
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
-		<title>Site marchand</title>
+		<title><?=NOM_SITE?></title>
 		<link rel="stylesheet" type="text/css" href="styles/style.css">
 	</head>
 
